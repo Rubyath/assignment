@@ -41,10 +41,10 @@ anc_final$v190 <- factor(anc_final$v190, levels = c(1:5), labels = c("poorest", 
 attr(anc_final$v024, "labels")
 anc_final$v024 <- factor(anc_final$v024, levels = c(1, 2, 3, 4, 5, 6, 7, 8), labels = c("barishal", "chattogram", "dhaka", "khulna", "mymensingh", "rajshahi", "rangpur", "sylhet"))
 
-# cretaing survey weights
+# creating survey weights
 anc_final <- anc_final %>% mutate(wt = v005 / 1000000)
 library(survey)
-# cretaing survey design object with weights
+# creating survey design object with weights
 survey_design <- svydesign(id = ~v001, strata = ~v023, weights = anc_final$wt, data = anc_final)
 
 #descriptive analysis
@@ -133,7 +133,7 @@ svychisq(~ v024 + quality_anc, design = survey_design)
 
 --------------------------------------------------------------------------------
 ##Additional code
-# Variables to loop over for % by categories
+# Variables to loop over for % by provider categories
 prov_vars <- paste0("m2", letters[1:14])  # Generates "m2a", "m2b", ..., "m2g"
 # Create an empty list to store results
 results_list <- list()
